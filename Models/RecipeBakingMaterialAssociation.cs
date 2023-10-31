@@ -3,10 +3,10 @@ using System.ComponentModel.DataAnnotations;
 
 namespace OatBoySystem.Models;
 
-public class RecipeBakingMaterial
+public class RecipeBakingMaterialAssociation
 {
     [Key]
-    public int RecipeBakingMaterialId { get;set; }
+    public int RecipeBakingMaterialAssociationId { get;set; }
     [Required]
     public int Quantity { get;set; }
 

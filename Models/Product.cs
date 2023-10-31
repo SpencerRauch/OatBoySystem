@@ -22,7 +22,8 @@ public class Product
     public int RecipeId { get;set; }
     public Recipe? Recipe { get;set; }
 
-    public List<ProductShippingMaterial> ProductShippingMaterials { get;set; } = new();
+    public List<ProductShippingMaterial> ShippingMaterials { get;set; } = new();
     //todo: finished goods associations
+    public List<ProductStock> Stock { get;set; } = new();
 
 }

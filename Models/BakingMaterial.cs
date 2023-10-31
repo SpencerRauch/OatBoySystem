@@ -20,5 +20,5 @@ public class BakingMaterial
     // stock items of this type
     public List<BakingMaterialStock> Stock { get;set; } = new();
     // associatons to recipes
-    public List<RecipeBakingMaterial> RecipeAssociations { get;set; } = new();
+    public List<RecipeBakingMaterialAssociation> RecipeAssociations { get;set; } = new();
 }

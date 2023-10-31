@@ -3,10 +3,10 @@ using System.ComponentModel.DataAnnotations;
 
 namespace OatBoySystem.Models;
 
-public class ProductShippingMaterial
+public class OrderProductStockAssociation
 {
     [Key]
-    public int ProductShippingMaterialId { get;set; }
+    public int OrderProductStockAssociationId { get;set; }
 
     [Required]
     public int Quantity { get;set; }
@@ -14,12 +14,12 @@ public class ProductShippingMaterial
     public DateTime CreatedAt {get;set;} = DateTime.Now;
     public DateTime UpdatedAt {get;set;} = DateTime.Now;
 
-    public int ProductId { get;set; }
+    public int ProductStockId { get;set; }
     public Product? Product { get;set; }
 
-    public int ShippingMaterialId { get;set; }
-    public ShippingMaterial? ShippingMaterial { get;set; }
+    public int OrderProductId { get;set; }
+    public OrderProduct OrderProduct { get;set; }
 
-    
+
 
 }

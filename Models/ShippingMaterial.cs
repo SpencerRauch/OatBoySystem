@@ -16,6 +16,5 @@ public class ShippingMaterial
     //Nav props needed: list of ProductShippingMaterialUses (prods containing sm)
     public List<ShippingMaterialStock> Stock { get;set; } = new();
     public List<ProductShippingMaterial> ProductAssociations { get;set; } = new();
-    public List<ShippingMaterialStockAdjustment> Adjustments { get;set; } = new();
 
 }

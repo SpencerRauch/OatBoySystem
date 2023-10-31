@@ -16,8 +16,8 @@ public class Recipe
     public DateTime CreatedAt {get;set;} = DateTime.Now;
     public DateTime UpdatedAt {get;set;} = DateTime.Now;
 
-    public List<Product> PackedIn { get;set; } = new();
-    public List<RecipeBakingMaterial> RecipeBakingMaterials { get;set; } = new();
+    public List<Product> Products { get;set; } = new();
+    public List<RecipeBakingMaterialAssociation> BakingMaterialAssociations { get;set; } = new();
     public List<Batch> Batches { get;set; } = new();
 
 }

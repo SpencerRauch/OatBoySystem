@@ -27,7 +27,7 @@ public class BakingMaterialStock
     
     public int BakingMaterialId { get;set; }
     public BakingMaterial? BakingMaterial { get;set; }
-    public List<BatchBakingMaterialStock> BatchAssociations { get;set; } = new();
+    public List<BatchBakingMaterialStockAssociation> BatchAssociations { get;set; } = new();
     public List<BakingMaterialStockAdjustment> Adjustments { get;set; } = new();
 
 }

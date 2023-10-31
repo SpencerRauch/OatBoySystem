@@ -1,16 +1,28 @@
 #pragma warning disable CS8618
-// We can disable our warnings safely because we know the framework will assign non-null values 
-// when it constructs this class for us.
+
 using Microsoft.EntityFrameworkCore;
 namespace OatBoySystem.Models;
-// the MyContext class represents a session with our MySQL database, allowing us to query for or save data
-// DbContext is a class that comes from EntityFramework, we want to inherit its features
+
 public class OatBoyContext : DbContext 
 {   
-    // This line will always be here. It is what constructs our context upon initialization  
     public OatBoyContext(DbContextOptions options) : base(options) { }    
-    // We need to create a new DbSet<Model> for every model in our project that is making a table
-    // The name of our table in our database will be based on the name we provide here
-    // This is where we provide a plural version of our model to fit table naming standards    
+    public DbSet<BakingMaterial> BakingMaterials { get;set; }
+    public DbSet<BakingMaterialStock> BakingMaterialStock { get;set; }
+    public DbSet<BakingMaterialStockAdjustment> BakingMaterialStockAdjustments { get;set; }
+    public DbSet<Batch> Batches { get;set; }
+    public DbSet<BatchBakingMaterialStockAssociation> BatchBakingMaterialStockAssociations { get;set; }
+    public DbSet<Order> Orders { get;set; }
+    public DbSet<OrderProduct> OrderProducts { get;set; }
+    public DbSet<OrderProductStockAssociation> OrderProductStockAssociations { get;set; }
+    public DbSet<Product> Products { get;set; }
+    public DbSet<ProductShippingMaterialAssociation> ProductShippingMaterialAssociations { get;set; }
+    public DbSet<ProductStock> ProductStock { get;set; }
+    public DbSet<ProductStockAdjustment> ProductStockAdjustments { get;set; }
+    public DbSet<Recipe> Recipes { get;set; }
+    public DbSet<RecipeBakingMaterialAssociation> RecipeBakingMaterialAssociations { get;set; }
+    public DbSet<ShippingMaterial> ShippingMaterials { get;set; }
+    public DbSet<ShippingMaterialStock> ShippingMaterialStock { get;set; }
+    public DbSet<ShippingMaterialStockAdjustment> ShippingMaterialStockAdjustments { get;set; }
+
     
 }

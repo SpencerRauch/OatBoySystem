@@ -16,7 +16,7 @@ public class Batch
     public int RecipeId { get;set; }
     public Recipe? Recipe { get;set; }
 
-    public List<BatchBakingMaterialStock> UsedStock { get;set; } = new();
-    
+    public List<BatchBakingMaterialStockAssociation> BakingMaterialStockAssociations { get;set; } = new();
+    public List<ProductStock> ProductStock { get;set; } = new();
 
 }
