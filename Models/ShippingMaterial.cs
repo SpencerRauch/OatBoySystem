@@ -15,6 +15,6 @@ public class ShippingMaterial
     public DateTime UpdatedAt {get;set;} = DateTime.Now;
     //Nav props needed: list of ProductShippingMaterialUses (prods containing sm)
     public List<ShippingMaterialStock> Stock { get;set; } = new();
-    public List<ProductShippingMaterial> ProductAssociations { get;set; } = new();
+    public List<ProductShippingMaterialAssociation> ProductAssociations { get;set; } = new();
 
 }

@@ -15,7 +15,7 @@ public class OrderProductStockAssociation
     public DateTime UpdatedAt {get;set;} = DateTime.Now;
 
     public int ProductStockId { get;set; }
-    public Product? Product { get;set; }
+    public ProductStock? ProductStock { get;set; }
 
     public int OrderProductId { get;set; }
     public OrderProduct OrderProduct { get;set; }
