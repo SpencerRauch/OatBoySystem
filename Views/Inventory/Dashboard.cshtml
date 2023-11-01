@@ -1,0 +1,88 @@
+@model InventoryDash
+@{
+    ViewData["Title"] = "Inventory";
+}
+
+<div class="text-center scroll">
+    <h1 class="">Inventory</h1>
+    <div class="d-flex align-items-center justify-content-around">
+        <button disabled class="btn-lg btn-primary p-4">Create PO</button>
+        <button disabled class="btn-lg btn-primary p-4">Process PO</button>
+    </div>
+    <table class="table table-sm  scroll">
+        <thead>
+            <tr>
+                <th>Products:</th>
+                <th>QTY</th>
+                <th>UoM</th>
+                <th><a asp-action="NewProduct" asp-controller="Inventory" class="btn btn-info">New</a></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (Product p in Model.AllProducts)
+            {
+                int onHand = 0;
+                foreach (ProductStock ps in p.Stock)
+                {
+                    onHand += ps.Quantity;
+                }
+                <tr>
+                    <td>@p.Name</td>
+                    <td>@onHand</td>
+                    <td>@p.UnitOfMeasure</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    <table class="table table-sm">
+        <thead>
+            <tr>
+                <th>Baking Materials:</th>
+                <th>QTY</th>
+                <th>UoM</th>
+                <th><a asp-action="NewBakingMaterial" asp-controller="Inventory" class="btn btn-info">New</a></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (BakingMaterial bm in Model.AllBakingMaterials)
+            {
+                int onHand = 0;
+                foreach (BakingMaterialStock bms in bm.Stock)
+                {
+                    onHand += bms.Quantity;
+                }
+                <tr>
+                    <td>@bm.Name</td>
+                    <td>@onHand</td>
+                    <td>@bm.UnitOfMeasure</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    <table class="table table-sm">
+        <thead>
+            <tr>
+                <th>Shipping Materials:</th>
+                <th>QTY</th>
+                <th>UoM</th>
+                <th><a asp-action="NewShippingMaterial" asp-controller="Inventory" class="btn btn-info">New</a></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (ShippingMaterial sm in Model.AllShippingMaterials)
+            {
+                int onHand = 0;
+                foreach (ShippingMaterialStock sms in sm.Stock)
+                {
+                    onHand += sms.Quantity;
+                }
+                <tr>
+                    <td>@sm.Name</td>
+                    <td>@onHand</td>
+                    <td>@sm.UnitOfMeasure</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+</div>

@@ -1,0 +1,21 @@
+@model BakingMaterial
+@{
+    ViewData["Title"] = "New Baking Material";
+}
+<div class="text-center container">
+
+<h1>New Baking Material</h1>
+<form asp-action="CreateBakingMaterial" asp-controller="Inventory" class="text-center" method="Post">
+    <div class="mb-3">
+        <label asp-for="Name" class="form-label"></label>
+        <input asp-for="Name" class="form-control px-2">
+        <span class="text-danger" asp-validation-for="Name"></span>
+    </div>
+    <div>
+        <label asp-for="UnitOfMeasure" class="form-label"></label>
+        <input asp-for="UnitOfMeasure" class="form-control">
+        <span class="text-danger" asp-validation-for="UnitOfMeasure"></span>
+    </div>
+    <button class="btn btn-primary mt-3">Create</button>
+</form>
+</div>

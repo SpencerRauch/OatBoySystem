@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "c:\\OatBoySystem\\OatBoySystem.csproj": {}
+    "C:\\OatBoySystem\\OatBoySystem.csproj": {}
   },
   "projects": {
-    "c:\\OatBoySystem\\OatBoySystem.csproj": {
+    "C:\\OatBoySystem\\OatBoySystem.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "c:\\OatBoySystem\\OatBoySystem.csproj",
+        "projectUniqueName": "C:\\OatBoySystem\\OatBoySystem.csproj",
         "projectName": "OatBoySystem",
-        "projectPath": "c:\\OatBoySystem\\OatBoySystem.csproj",
+        "projectPath": "C:\\OatBoySystem\\OatBoySystem.csproj",
         "packagesPath": "C:\\Users\\bizar\\.nuget\\packages\\",
-        "outputPath": "c:\\OatBoySystem\\obj\\",
+        "outputPath": "C:\\OatBoySystem\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\bizar\\AppData\\Roaming\\NuGet\\NuGet.Config"
