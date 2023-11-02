@@ -4,7 +4,15 @@
 }
 
 <div class="container text-center">
-    <h1>@Model.Name</h1>
+    <div class="d-flex align-items-center">
+        <h1 class="flex-grow-1">@Model.Name (@Model.UnitOfMeasure.ToUpper())</h1>
+        <a asp-action="BakingMaterialStockNew" 
+        asp-controller="Inventory" 
+        asp-route-bmId="@Model.BakingMaterialId"
+        class="btn btn-primary">
+            Add Stock
+        </a>
+    </div>
     <table class="table table-hover">
         <thead>
             <tr>

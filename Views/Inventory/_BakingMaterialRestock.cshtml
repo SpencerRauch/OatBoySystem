@@ -1,0 +1,30 @@
+@model BakingMaterialStockForm
+
+<form asp-action="BakingMaterialStockCreate" asp-controller="Inventory" asp-route-bmId="@Model.BakingMaterial.BakingMaterialId" method="Post">
+    <div class="mb-3">
+        <label asp-for="Quantity">@Model.BakingMaterial.UnitOfMeasure.ToUpper()</label>
+        <input asp-for="Quantity">
+        <p><span class="text-danger" asp-validation-for="Quantity"></span></p>
+    </div>
+    <div class="mb-3">
+        <label asp-for="Brand"></label>
+        <input asp-for="Brand">
+        <p><span class="text-danger" asp-validation-for="Brand"></span></p>
+    </div>
+    <div class="mb-3">
+        <label asp-for="Batch"></label>
+        <input asp-for="Batch">
+        <p><span class="text-danger" asp-validation-for="Batch"></span></p>
+    </div>
+    <div class="mb-3">
+        <label asp-for="DateOfManufacture">DOM</label>
+        <input asp-for="DateOfManufacture">
+        <p><span class="text-danger" asp-validation-for="DateOfManufacture"></span></p>
+    </div>
+    <div class="mb-3">
+        <label asp-for="Expiration"></label>
+        <input asp-for="Expiration">
+        <p><span class="text-danger" asp-validation-for="Expiration"></span></p>
+    </div>
+    <button class="btn btn-primary">Add To Inventory</button>
+</form>
