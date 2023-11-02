@@ -32,7 +32,7 @@ public class UniqueBatchAttribute : ValidationAttribute
             return new ValidationResult("Batch required. Enter DOM or EXP as MM/YY if batch unknown.");
         }
         OatBoyContext _context = (OatBoyContext)validationContext.GetService(typeof(OatBoyContext));
-        if (_context.BakingMaterialStock.Any(bms => bms.Batch == value.ToString()))
+        if (_context.BakingMaterialStock.Any(bms => bms.Batch.ToUpper() == value.ToString().ToUpper()))
         {
             return new ValidationResult("Batch in system, make adjustment instead");
         }
