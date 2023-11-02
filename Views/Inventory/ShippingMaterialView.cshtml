@@ -1,0 +1,36 @@
+@model ShippingMaterial
+@{
+    ViewData["Title"] = "Shipping Material Stock";
+}
+
+<div class="container text-center">
+    <div class="d-flex align-items-center">
+        <h1 class="flex-grow-1">@Model.Name (@Model.UnitOfMeasure.ToUpper())</h1>
+        <a asp-action="ShippingMaterialStockNew" 
+        asp-controller="Inventory" 
+        asp-route-smId="@Model.ShippingMaterialId"
+        class="btn btn-primary">
+            Add Stock
+        </a>
+    </div>
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th>Brand</th>
+                <th>On Hand</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (ShippingMaterialStock sms in Model.Stock)
+            {
+                <tr>
+                    <th>@sms.Brand</th>
+                    <th>@sms.Quantity</th>
+                </tr>
+            }
+        </tbody>
+    </table>
+    <div class="border border-dark  mb-4">
+        @await Html.PartialAsync("_ShippingMaterialAdjustment", new ShippingManualAdjust(){CurrentStock=Model.Stock,ShippingMaterialId=Model.ShippingMaterialId})
+    </div>
+</div>

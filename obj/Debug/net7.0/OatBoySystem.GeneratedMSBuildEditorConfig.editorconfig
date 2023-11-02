@@ -40,12 +40,28 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSW52ZW50b3J5XFNoaXBwaW5nTWF0ZXJpYWxOZXcuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/OatBoySystem/Views/Inventory/ShippingMaterialStockNew.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSW52ZW50b3J5XFNoaXBwaW5nTWF0ZXJpYWxTdG9ja05ldy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/OatBoySystem/Views/Inventory/ShippingMaterialView.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSW52ZW50b3J5XFNoaXBwaW5nTWF0ZXJpYWxWaWV3LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/OatBoySystem/Views/Inventory/_BakingMaterialAdjustment.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSW52ZW50b3J5XF9CYWtpbmdNYXRlcmlhbEFkanVzdG1lbnQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/OatBoySystem/Views/Inventory/_BakingMaterialRestock.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSW52ZW50b3J5XF9CYWtpbmdNYXRlcmlhbFJlc3RvY2suY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/OatBoySystem/Views/Inventory/_ShippingMaterialAdjustment.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSW52ZW50b3J5XF9TaGlwcGluZ01hdGVyaWFsQWRqdXN0bWVudC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/OatBoySystem/Views/Inventory/_ShippingMaterialRestock.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSW52ZW50b3J5XF9TaGlwcGluZ01hdGVyaWFsUmVzdG9jay5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/OatBoySystem/Views/Shared/Error.cshtml]

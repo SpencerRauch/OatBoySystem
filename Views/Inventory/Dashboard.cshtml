@@ -77,7 +77,7 @@
                     onHand += sms.Quantity;
                 }
                 <tr>
-                    <td>@sm.Name</td>
+                    <td><a asp-action="ShippingMaterialView" asp-controller="Inventory" asp-route-id="@sm.ShippingMaterialId">@sm.Name</a></td>
                     <td>@onHand</td>
                     <td>@sm.UnitOfMeasure.ToUpper()</td>
                 </tr>

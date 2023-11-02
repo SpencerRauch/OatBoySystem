@@ -1,0 +1,16 @@
+@model ShippingMaterialStockForm
+
+<form asp-action="ShippingMaterialStockCreate" asp-controller="Inventory" asp-route-smId="@Model.ShippingMaterial.ShippingMaterialId" method="Post">
+    <div class="mb-3">
+        <label asp-for="Quantity">@Model.ShippingMaterial.UnitOfMeasure.ToUpper()</label>
+        <input asp-for="Quantity">
+        <p><span class="text-danger" asp-validation-for="Quantity"></span></p>
+    </div>
+    <div class="mb-3">
+        <label asp-for="Brand"></label>
+        <input asp-for="Brand">
+        <p><span class="text-danger" asp-validation-for="Brand"></span></p>
+    </div>
+    <button class="btn btn-primary">Add To Inventory</button>
+</form>
+<a asp-action="ShippingMaterialView" asp-controller="Inventory" asp-route-id="@Model.ShippingMaterial.ShippingMaterialId" class="btn btn-info">Cancel</a>

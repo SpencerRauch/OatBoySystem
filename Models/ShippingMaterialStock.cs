@@ -10,6 +10,9 @@ public class ShippingMaterialStock
     [Required]
     public int Quantity { get;set; }
 
+    [Required]
+    public string Brand { get;set; }
+
     public int ShippingMaterialId { get;set; }
     public ShippingMaterial? ShippingMaterial { get;set; }
 

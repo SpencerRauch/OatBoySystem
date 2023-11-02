@@ -1,19 +1,18 @@
 @model BakingMaterial
 @{
     ViewData["Title"] = "Baking Material Stock";
+
 }
 
 <div class="container text-center">
     <div class="d-flex align-items-center">
         <h1 class="flex-grow-1">@Model.Name (@Model.UnitOfMeasure.ToUpper())</h1>
-        <a asp-action="BakingMaterialStockNew" 
-        asp-controller="Inventory" 
-        asp-route-bmId="@Model.BakingMaterialId"
-        class="btn btn-primary">
+        <a asp-action="BakingMaterialStockNew" asp-controller="Inventory" asp-route-bmId="@Model.BakingMaterialId"
+            class="btn btn-primary">
             Add Stock
         </a>
     </div>
-    <table class="table table-hover">
+    <table class="table">
         <thead>
             <tr>
                 <th>Batch</th>
@@ -26,17 +25,33 @@
         <tbody>
             @foreach (BakingMaterialStock bms in Model.Stock)
             {
-                <tr>
+                <tr class="@(bms.Status == 2 || bms.Status == 1 ? "table-danger":"table-primary")">
                     <th>@bms.Batch</th>
                     <th>@bms.Brand</th>
-                    <th>@bms.Status</th>
+                    <th>
+                        @* @ViewBag.BakingMaterialStatus[(int)bms.Status] *@
+                        <form asp-action="BakingMaterialStockStatus" asp-controller="Inventory" asp-route-bmsId="@bms.BakingMaterialStockId" method="post">
+                            <select name="statusCode">
+                                @foreach (KeyValuePair<int,string> kvp in ViewBag.BakingMaterialStatus)
+                                {
+                                    if (kvp.Key == bms.Status){
+                                        <option value="@kvp.Key" selected>@kvp.Value</option>
+                                    } else {
+                                        <option value="@kvp.Key">@kvp.Value</option>
+                                    }
+                                }
+                            </select>
+                            <button class="btn btn-info">Update</button>
+                        </form>
+                    </th>
                     <th>@bms.Quantity</th>
                     <th>@bms.Expiration?.ToShortDateString()</th>
                 </tr>
             }
         </tbody>
     </table>
-    <div class="border border-dark">
-        @await Html.PartialAsync("_BakingMaterialAdjustment", new BakingManualAdjust(){CurrentStock=Model.Stock,BakingMaterialId=Model.BakingMaterialId})
+    <div class="border border-dark mb-5">
+        @await Html.PartialAsync("_BakingMaterialAdjustment", new
+        BakingManualAdjust(){CurrentStock=Model.Stock,BakingMaterialId=Model.BakingMaterialId})
     </div>
 </div>

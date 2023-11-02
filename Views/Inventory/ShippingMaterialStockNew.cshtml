@@ -1,0 +1,9 @@
+@model ShippingMaterial
+@{
+    ViewData["Title"] = "Adding @Model.Name stock";
+}
+<div class="text-center container">
+
+<h1>Stocking @Model.Name</h1>
+@await Html.PartialAsync("_ShippingMaterialRestock", new ShippingMaterialStockForm(){ShippingMaterial = Model})
+</div>

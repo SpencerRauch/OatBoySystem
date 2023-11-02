@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using OatBoySystem.Models;
 
@@ -10,9 +11,10 @@ using OatBoySystem.Models;
 namespace OatBoySystem.Migrations
 {
     [DbContext(typeof(OatBoyContext))]
-    partial class OatBoyContextModelSnapshot : ModelSnapshot
+    [Migration("20231102183119_ThirdMigrationAddsBrandsToSMS")]
+    partial class ThirdMigrationAddsBrandsToSMS
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
