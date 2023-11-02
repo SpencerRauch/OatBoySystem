@@ -18,6 +18,7 @@ public class InventoryController : Controller
         _context = context;
     }
 
+    [HttpGet("inventory")]
     public IActionResult Dashboard()
     {
         InventoryDash InventoryDash = new()
@@ -29,36 +30,75 @@ public class InventoryController : Controller
         return View(InventoryDash);
     }
 
-    public ViewResult NewBakingMaterial()
+    // BAKING MATERIALS
+    [HttpGet("bakingmaterial/new")]
+    public ViewResult BakingMaterialNew()
     {
         return View();
     }
 
-    [HttpPost]
-    public IActionResult CreateBakingMaterial(BakingMaterial newBM)
+    [HttpPost("bakingmaterial/create")]
+    public IActionResult BakingMaterialCreate(BakingMaterial newBM)
     {
         if (!ModelState.IsValid)
         {
-            return View("NewBakingMaterial");
+            return View("BakingMaterialNew");
         }
         _context.Add(newBM);
         _context.SaveChanges();
         return RedirectToAction("Dashboard");
     }
 
-    public ViewResult NewShippingMaterial()
+    [HttpGet("bakingmaterial/{id}")]
+    public ViewResult BakingMaterialView(int id)
+    {
+        BakingMaterial? BMfromDb = _context.BakingMaterials
+                                            .Include(bm => bm.Stock)
+                                            .FirstOrDefault(bm => bm.BakingMaterialId == id);
+        return View("BakingMaterialView",BMfromDb);
+    }
+
+    [HttpPost("bakingmaterialstock/adjust/{returnId}")]
+    public IActionResult BakingMaterialStockAdjust(BakingManualAdjust formAdjust, int returnId)
+    {
+        if (!ModelState.IsValid)
+        {
+            return BakingMaterialView(returnId);
+        }
+        BakingMaterialStock? BMSToAdjust = _context.BakingMaterialStock
+                                            .FirstOrDefault(bms => bms.BakingMaterialStockId == formAdjust.BakingMaterialStockId);
+        if (BMSToAdjust == null)
+        {
+            ModelState.AddModelError("Quantity","Error locating batch");
+            return BakingMaterialView(returnId);
+        }
+        BMSToAdjust.Quantity += (int)formAdjust.Quantity;
+        BakingMaterialStockAdjustment newAdjust = new()
+        {
+            Quantity = (int)formAdjust.Quantity,
+            ReasonCode = formAdjust.ReasonCode,
+            BakingMaterialStockId = formAdjust.BakingMaterialStockId
+        };
+        _context.Add(newAdjust);
+        _context.SaveChanges();
+        return RedirectToAction("BakingMaterialView",new{id=returnId});
+    }
+
+    //SHIPPING MATERIALS
+    [HttpGet("shippingmaterial/new")]
+    public ViewResult ShippingMaterialNew()
     {
         return View();
     }
 
-    [HttpPost]
-    public IActionResult CreateShippingMaterial(ShippingMaterial newBM)
+    [HttpPost("shippingmaterial/create")]
+    public IActionResult ShippingMaterialCreate (ShippingMaterial newSM)
     {
         if (!ModelState.IsValid)
         {
-            return View("NewShippingMaterial");
+            return View("ShippingMaterialNew");
         }
-        _context.Add(newBM);
+        _context.Add(newSM);
         _context.SaveChanges();
         return RedirectToAction("Dashboard");
     }

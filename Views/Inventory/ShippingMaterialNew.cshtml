@@ -1,11 +1,11 @@
-@model BakingMaterial
+@model ShippingMaterial
 @{
-    ViewData["Title"] = "New Baking Material";
+    ViewData["Title"] = "New Shipping Material";
 }
 <div class="text-center container">
 
-<h1>New Baking Material</h1>
-<form asp-action="CreateBakingMaterial" asp-controller="Inventory" class="text-center" method="Post">
+<h1>New Shipping Material</h1>
+<form asp-action="ShippingMaterialCreate" asp-controller="Inventory" class="text-center" method="Post">
     <div class="mb-3">
         <label asp-for="Name" class="form-label"></label>
         <input asp-for="Name" class="form-control px-2">

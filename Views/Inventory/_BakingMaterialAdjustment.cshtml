@@ -1,0 +1,35 @@
+@model BakingManualAdjust
+<h2>Manual Adjust</h2>
+
+<div class="container">
+    <form asp-action="BakingMaterialStockAdjust" asp-route-returnId="@Model.BakingMaterialId" asp-controller="Inventory" method="Post">
+        <div class="mb-3">
+            <label asp-for="BakingMaterialStockId">Batch</label>
+            <select asp-for="BakingMaterialStockId">
+                @foreach (BakingMaterialStock bms in Model.CurrentStock)
+                {
+                    <option value="@bms.BakingMaterialStockId">@bms.Batch</option>
+                }
+            </select>
+        </div>
+        <div class="mb-3">
+            <label asp-for="Quantity">Adjust (+/-)</label>
+            <input asp-for="Quantity">
+            <p><span class="text-danger" asp-validation-for="Quantity"></span></p>
+        </div>
+        <div class="mb-3">
+            <label asp-for="ReasonCode">Reason</label>
+            <select asp-for="ReasonCode">
+                <option value="0">Expired</option>
+                @* <option value="1">Cancellation</option> *@
+                <option value="2">Inventory Audit</option>
+                <option value="3">Damage</option>
+                @* <option value="4">Demo</option> *@
+                <option value="5">Restock</option>
+                @* <option value="6">Purchase Order</option> *@
+                @* <option value="7">New Pack</option> *@
+            </select>
+        </div>
+        <button class="btn btn-primary mb-3">Adjust</button>
+    </form>
+</div>

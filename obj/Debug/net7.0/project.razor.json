@@ -18655,8 +18655,13 @@
       "FileKind": "mvc"
     },
     {
-      "FilePath": "c:\\OatBoySystem\\Views\\Inventory\\NewShippingMaterial.cshtml",
-      "TargetPath": "Views\\Inventory\\NewShippingMaterial.cshtml",
+      "FilePath": "c:\\OatBoySystem\\Views\\Inventory\\ShippingMaterialNew.cshtml",
+      "TargetPath": "Views\\Inventory\\ShippingMaterialNew.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\OatBoySystem\\Views\\Inventory\\BakingMaterialView.cshtml",
+      "TargetPath": "Views\\Inventory\\BakingMaterialView.cshtml",
       "FileKind": "mvc"
     },
     {
@@ -18675,13 +18680,18 @@
       "FileKind": "mvc"
     },
     {
-      "FilePath": "c:\\OatBoySystem\\Views\\Inventory\\NewBakingMaterial.cshtml",
-      "TargetPath": "Views\\Inventory\\NewBakingMaterial.cshtml",
+      "FilePath": "c:\\OatBoySystem\\Views\\Inventory\\BakingMaterialNew.cshtml",
+      "TargetPath": "Views\\Inventory\\BakingMaterialNew.cshtml",
       "FileKind": "mvc"
     },
     {
       "FilePath": "c:\\OatBoySystem\\Views\\Inventory\\Dashboard.cshtml",
       "TargetPath": "Views\\Inventory\\Dashboard.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\OatBoySystem\\Views\\Inventory\\_BakingMaterialAdjustment.cshtml",
+      "TargetPath": "Views\\Inventory\\_BakingMaterialAdjustment.cshtml",
       "FileKind": "mvc"
     },
     {

@@ -20,16 +20,24 @@ build_property._RazorSourceGeneratorDebug =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/OatBoySystem/Views/Inventory/BakingMaterialNew.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSW52ZW50b3J5XEJha2luZ01hdGVyaWFsTmV3LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/OatBoySystem/Views/Inventory/BakingMaterialView.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSW52ZW50b3J5XEJha2luZ01hdGVyaWFsVmlldy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/OatBoySystem/Views/Inventory/Dashboard.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSW52ZW50b3J5XERhc2hib2FyZC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/OatBoySystem/Views/Inventory/NewBakingMaterial.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSW52ZW50b3J5XE5ld0Jha2luZ01hdGVyaWFsLmNzaHRtbA==
+[C:/OatBoySystem/Views/Inventory/ShippingMaterialNew.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSW52ZW50b3J5XFNoaXBwaW5nTWF0ZXJpYWxOZXcuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/OatBoySystem/Views/Inventory/NewShippingMaterial.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSW52ZW50b3J5XE5ld1NoaXBwaW5nTWF0ZXJpYWwuY3NodG1s
+[C:/OatBoySystem/Views/Inventory/_BakingMaterialAdjustment.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSW52ZW50b3J5XF9CYWtpbmdNYXRlcmlhbEFkanVzdG1lbnQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/OatBoySystem/Views/Shared/Error.cshtml]

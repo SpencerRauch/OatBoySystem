@@ -14,9 +14,14 @@ public class BakingMaterialStock
     [Required]
     public string Brand { get;set; }
 
+    [Required]
+    public int Status { get;set; }
+
     [DataType(DataType.Date)]
     public DateTime? DateOfManufacture { get;set; }
 
+    [Required(ErrorMessage = "Batch required. Enter DOM or EXP as MM/YY if batch unknown.")]
+    [UniqueBatch]
     public string Batch { get;set; }
 
     [DataType(DataType.Date)]
@@ -30,4 +35,22 @@ public class BakingMaterialStock
     public List<BatchBakingMaterialStockAssociation> BatchAssociations { get;set; } = new();
     public List<BakingMaterialStockAdjustment> Adjustments { get;set; } = new();
 
+}
+
+public class UniqueBatchAttribute : ValidationAttribute
+{
+    protected override ValidationResult? IsValid(object? value, ValidationContext validationContext)
+    {
+        if(value == null)
+        {
+            return new ValidationResult("Batch required. Enter DOM or EXP as MM/YY if batch unknown.");
+        }
+        OatBoyContext _context = (OatBoyContext)validationContext.GetService(typeof(OatBoyContext));
+    	if(_context.BakingMaterialStock.Any(bms => bms.Batch == value.ToString()))
+        {
+            return new ValidationResult("Batch in system, make adjustment instead");
+        } else {
+            return ValidationResult.Success;
+        }
+    }
 }

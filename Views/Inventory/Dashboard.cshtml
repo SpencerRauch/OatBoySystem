@@ -15,7 +15,7 @@
                 <th>Products:</th>
                 <th>QTY</th>
                 <th>UoM</th>
-                <th><a asp-action="NewProduct" asp-controller="Inventory" class="btn btn-warning">New</a></th>
+                <th><a asp-action="ProductNew" asp-controller="Inventory" class="btn btn-warning">New</a></th>
             </tr>
         </thead>
         <tbody>
@@ -29,7 +29,7 @@
                 <tr>
                     <td>@p.Name</td>
                     <td>@onHand</td>
-                    <td>@p.UnitOfMeasure</td>
+                    <td>@p.UnitOfMeasure.ToUpper()</td>
                 </tr>
             }
         </tbody>
@@ -40,7 +40,7 @@
                 <th>Baking Materials:</th>
                 <th>QTY</th>
                 <th>UoM</th>
-                <th><a asp-action="NewBakingMaterial" asp-controller="Inventory" class="btn btn-info">New</a></th>
+                <th><a asp-action="BakingMaterialNew" asp-controller="Inventory" class="btn btn-info">New</a></th>
             </tr>
         </thead>
         <tbody>
@@ -52,9 +52,9 @@
                     onHand += bms.Quantity;
                 }
                 <tr>
-                    <td>@bm.Name</td>
+                    <td><a asp-action="BakingMaterialView" asp-controller="Inventory" asp-route-id="@bm.BakingMaterialId">@bm.Name</a></td>
                     <td>@onHand</td>
-                    <td>@bm.UnitOfMeasure</td>
+                    <td>@bm.UnitOfMeasure.ToUpper()</td>
                 </tr>
             }
         </tbody>
@@ -65,7 +65,7 @@
                 <th>Shipping Materials:</th>
                 <th>QTY</th>
                 <th>UoM</th>
-                <th><a asp-action="NewShippingMaterial" asp-controller="Inventory" class="btn btn-info">New</a></th>
+                <th><a asp-action="ShippingMaterialNew" asp-controller="Inventory" class="btn btn-info">New</a></th>
             </tr>
         </thead>
         <tbody>
@@ -79,7 +79,7 @@
                 <tr>
                     <td>@sm.Name</td>
                     <td>@onHand</td>
-                    <td>@sm.UnitOfMeasure</td>
+                    <td>@sm.UnitOfMeasure.ToUpper()</td>
                 </tr>
             }
         </tbody>

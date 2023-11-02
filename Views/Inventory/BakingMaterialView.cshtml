@@ -1,0 +1,34 @@
+@model BakingMaterial
+@{
+    ViewData["Title"] = "Baking Material Stock";
+}
+
+<div class="container text-center">
+    <h1>@Model.Name</h1>
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th>Batch</th>
+                <th>Brand</th>
+                <th>Status</th>
+                <th>On Hand</th>
+                <th>Exp</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (BakingMaterialStock bms in Model.Stock)
+            {
+                <tr>
+                    <th>@bms.Batch</th>
+                    <th>@bms.Brand</th>
+                    <th>@bms.Status</th>
+                    <th>@bms.Quantity</th>
+                    <th>@bms.Expiration?.ToShortDateString()</th>
+                </tr>
+            }
+        </tbody>
+    </table>
+    <div class="border border-dark">
+        @await Html.PartialAsync("_BakingMaterialAdjustment", new BakingManualAdjust(){CurrentStock=Model.Stock,BakingMaterialId=Model.BakingMaterialId})
+    </div>
+</div>
