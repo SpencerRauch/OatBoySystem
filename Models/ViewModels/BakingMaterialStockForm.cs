@@ -6,6 +6,7 @@ public class BakingMaterialStockForm
 {
     public BakingMaterial? BakingMaterial { get; set; }
     [Required]
+    [Range(0,int.MaxValue,ErrorMessage = "Quantity should be positive. Use adjustments for negative")]
     public int Quantity { get; set; }
 
     [Required]

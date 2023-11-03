@@ -6,6 +6,7 @@ public class ShippingMaterialStockForm
 {
     public ShippingMaterial? ShippingMaterial { get; set; }
     [Required]
+    [Range(0,int.MaxValue,ErrorMessage = "Quantity should be positive. Use adjustments for negative")]
     public int Quantity { get; set; }
 
     [Required(ErrorMessage = "Brand required. Put unknown if not known")]
