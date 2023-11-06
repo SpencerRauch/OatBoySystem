@@ -1,5 +1,6 @@
 using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.ModelBinding;
 using Microsoft.EntityFrameworkCore;
 using OatBoySystem.Models;
 using OatBoySystem.Models.ViewModels;
@@ -69,6 +70,32 @@ public class BakeryController : Controller
             Quantity = formModel.Quantity
         };
         _context.Add(newAss);
+        _context.SaveChanges();
+        return RedirectToAction("RecipeView", new{rId });
+
+    }
+
+    [HttpPost("recipes/{rId}/{bmId}/update")]
+    public IActionResult RecipeUpdateIngredient(int rId, int bmId, RecipeBakingMaterialAssociation rbma)
+    {
+        if (!ModelState.IsValid)
+        {
+            return RecipeView(rId);
+        }
+        RecipeBakingMaterialAssociation toUpdate = _context.RecipeBakingMaterialAssociations
+                                                        .FirstOrDefault(rbma => rbma.RecipeId == rId && rbma.BakingMaterialId == bmId);
+        toUpdate.Quantity = rbma.Quantity;
+        _context.SaveChanges();
+        return RedirectToAction("RecipeView", new{rId });
+
+    }
+
+    [HttpPost("recipes/{rId}/{bmId}/remove")]
+    public IActionResult RecipeRemoveIngredient(int rId, int bmId)
+    {
+        RecipeBakingMaterialAssociation toBeRemoved = _context.RecipeBakingMaterialAssociations
+                                                            .FirstOrDefault(rbma => rbma.RecipeId == rId && rbma.BakingMaterialId == bmId);
+        _context.Remove(toBeRemoved);
         _context.SaveChanges();
         return RedirectToAction("RecipeView", new{rId });
 

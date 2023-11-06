@@ -1,0 +1,16 @@
+@model RecipeBakingMaterialAssociation
+<div class="d-flex justify-content-between align-items-center gap-2 w-100 mb-4">
+    <form asp-action="RecipeUpdateIngredient" asp-controller="Bakery" asp-route-rId="@Model.RecipeId"
+        asp-route-bmId="@Model.BakingMaterialId" method="Post"
+        class="d-flex justify-content-between align-items-center gap-2 w-100">
+        <p class="w-25">@Model.BakingMaterial.Name</p>
+        <input asp-for="Quantity" value=@Model.Quantity class="w-25">
+        <p class="w-25">@Model.BakingMaterial.UnitOfMeasure.ToUpper()</p>
+        <p><span asp-validation-for="Quantity" class="text-danger"></span></p>
+        <button class="btn btn-primary">Update</button>
+    </form>
+    <form asp-action="RecipeRemoveIngredient" asp-controller="Bakery" asp-route-rId="@Model.RecipeId"
+        asp-route-bmId="@Model.BakingMaterialId" method="Post" class="d-flex justify-content-between align-items-center">
+        <button class="btn btn-danger">X</button>
+    </form>
+</div>

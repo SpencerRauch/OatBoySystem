@@ -12,13 +12,13 @@
             </tr>
         </thead>
         <tbody>
-            <tr>
                 @foreach (Recipe r in Model)
                 {
+                <tr>
                     <td><a asp-action="RecipeView" asp-controller="Bakery" asp-route-rId="@r.RecipeId">@r.Name</a></td>
                     <td>@r.Batches.Count</td>
+                </tr>
                 }
-            </tr>
         </tbody>
     </table>
     @if (Model.Count == 0){<h2>No recipes yet</h2>}

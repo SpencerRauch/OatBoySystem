@@ -1,19 +1,24 @@
 @model RecipeEdit
 @{
     ViewData["Title"] = Model.Recipe.Name;
-    List<BakingMaterial> Unassociated = Model.AllBakingMaterials.Where(bm => bm.RecipeAssociations.All(ra => ra.RecipeId != Model.Recipe.RecipeId)).ToList();
+    List<BakingMaterial> Unassociated = Model.AllBakingMaterials.Where(bm => bm.RecipeAssociations.All(ra => ra.RecipeId !=
+    Model.Recipe.RecipeId)).ToList();
 }
 <div class="text-center container">
     <h1>@Model.Recipe.Name</h1>
     <p>@Model.Recipe.Description</p>
     <h2>Ingredients:</h2>
-    @if(Model.Recipe.BakingMaterialAssociations.Count == 0){<p>Please add ingredients to recipe</p>}
+    @if (Model.Recipe.BakingMaterialAssociations.Count == 0)
+    {
+        <p>Please add ingredients to recipe</p>
+    }
     @foreach (RecipeBakingMaterialAssociation rcbma in Model.Recipe.BakingMaterialAssociations)
     {
-        <p>@rcbma.BakingMaterial.Name @rcbma.Quantity @rcbma.BakingMaterial.UnitOfMeasure</p>
+        @await Html.PartialAsync("_UpdateIngredient", rcbma)
     }
     <h2>Add Ingredient:</h2>
-    @await Html.PartialAsync("_AddIngredient",new RecipeAddIngredient(){Unassociated = Unassociated, RecipeId=Model.Recipe.RecipeId})
+    @await Html.PartialAsync("_AddIngredient",new RecipeAddIngredient(){Unassociated = Unassociated,
+    RecipeId=Model.Recipe.RecipeId})
 
 
 </div>
