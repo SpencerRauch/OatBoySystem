@@ -20,6 +20,7 @@ public class BakeryController : Controller
         _context = context;
     }
 
+    //RECIPES
     [HttpGet("recipes")]
     public ViewResult Recipes()
     {
@@ -99,6 +100,18 @@ public class BakeryController : Controller
         _context.SaveChanges();
         return RedirectToAction("RecipeView", new{rId });
 
+    }
+
+    //BATCHES
+
+    [HttpGet("dashboard")]
+    public ViewResult BakeryDashboard()
+    {
+        return View("BakeryDashboard", new BakeryDash()
+        {
+            AllRecipes = _context.Recipes.ToList(),
+            AllBatches = _context.Batches.Include(b => b.Recipe).ToList()
+        });
     }
 
 

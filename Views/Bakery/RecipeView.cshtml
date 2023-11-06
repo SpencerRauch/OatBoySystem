@@ -17,8 +17,12 @@
         @await Html.PartialAsync("_UpdateIngredient", rcbma)
     }
     <h2>Add Ingredient:</h2>
-    @await Html.PartialAsync("_AddIngredient",new RecipeAddIngredient(){Unassociated = Unassociated,
-    RecipeId=Model.Recipe.RecipeId})
+    @if (Unassociated.Count > 0)
+    {
+        @await Html.PartialAsync("_AddIngredient",new RecipeAddIngredient(){Unassociated = Unassociated,RecipeId=Model.Recipe.RecipeId});  
+    } else {
+        <p>All ingredients on recipe</p>
+    }
 
 
 </div>
