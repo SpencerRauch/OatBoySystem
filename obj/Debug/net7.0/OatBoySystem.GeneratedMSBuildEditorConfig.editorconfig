@@ -9,109 +9,109 @@ build_property.EnforceExtendedAnalyzerRules =
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = OatBoySystem
 build_property.RootNamespace = OatBoySystem
-build_property.ProjectDir = C:\OatBoySystem\
+build_property.ProjectDir = c:\OatBoySystem\
 build_property.RazorLangVersion = 7.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = C:\OatBoySystem
+build_property.MSBuildProjectDirectory = c:\OatBoySystem
 build_property._RazorSourceGeneratorDebug = 
 
-[C:/OatBoySystem/Views/Bakery/BakeryDashboard.cshtml]
+[c:/OatBoySystem/Views/Bakery/BakeryDashboard.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQmFrZXJ5XEJha2VyeURhc2hib2FyZC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/OatBoySystem/Views/Bakery/BatchEdit.cshtml]
+[c:/OatBoySystem/Views/Bakery/BatchEdit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQmFrZXJ5XEJhdGNoRWRpdC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/OatBoySystem/Views/Bakery/RecipeAllBatch.cshtml]
+[c:/OatBoySystem/Views/Bakery/RecipeAllBatch.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQmFrZXJ5XFJlY2lwZUFsbEJhdGNoLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/OatBoySystem/Views/Bakery/Recipes.cshtml]
+[c:/OatBoySystem/Views/Bakery/Recipes.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQmFrZXJ5XFJlY2lwZXMuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/OatBoySystem/Views/Bakery/RecipeView.cshtml]
+[c:/OatBoySystem/Views/Bakery/RecipeView.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQmFrZXJ5XFJlY2lwZVZpZXcuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/OatBoySystem/Views/Bakery/_AddIngredient.cshtml]
+[c:/OatBoySystem/Views/Bakery/_AddIngredient.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQmFrZXJ5XF9BZGRJbmdyZWRpZW50LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/OatBoySystem/Views/Bakery/_RecipeNew.cshtml]
+[c:/OatBoySystem/Views/Bakery/_RecipeNew.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQmFrZXJ5XF9SZWNpcGVOZXcuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/OatBoySystem/Views/Bakery/_UpdateIngredient.cshtml]
+[c:/OatBoySystem/Views/Bakery/_UpdateIngredient.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQmFrZXJ5XF9VcGRhdGVJbmdyZWRpZW50LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/OatBoySystem/Views/Home/Index.cshtml]
+[c:/OatBoySystem/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/OatBoySystem/Views/Inventory/BakingMaterialNew.cshtml]
+[c:/OatBoySystem/Views/Inventory/BakingMaterialNew.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSW52ZW50b3J5XEJha2luZ01hdGVyaWFsTmV3LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/OatBoySystem/Views/Inventory/BakingMaterialStockNew.cshtml]
+[c:/OatBoySystem/Views/Inventory/BakingMaterialStockNew.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSW52ZW50b3J5XEJha2luZ01hdGVyaWFsU3RvY2tOZXcuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/OatBoySystem/Views/Inventory/BakingMaterialView.cshtml]
+[c:/OatBoySystem/Views/Inventory/BakingMaterialView.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSW52ZW50b3J5XEJha2luZ01hdGVyaWFsVmlldy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/OatBoySystem/Views/Inventory/Dashboard.cshtml]
+[c:/OatBoySystem/Views/Inventory/Dashboard.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSW52ZW50b3J5XERhc2hib2FyZC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/OatBoySystem/Views/Inventory/ShippingMaterialNew.cshtml]
+[c:/OatBoySystem/Views/Inventory/ShippingMaterialNew.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSW52ZW50b3J5XFNoaXBwaW5nTWF0ZXJpYWxOZXcuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/OatBoySystem/Views/Inventory/ShippingMaterialStockNew.cshtml]
+[c:/OatBoySystem/Views/Inventory/ShippingMaterialStockNew.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSW52ZW50b3J5XFNoaXBwaW5nTWF0ZXJpYWxTdG9ja05ldy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/OatBoySystem/Views/Inventory/ShippingMaterialView.cshtml]
+[c:/OatBoySystem/Views/Inventory/ShippingMaterialView.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSW52ZW50b3J5XFNoaXBwaW5nTWF0ZXJpYWxWaWV3LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/OatBoySystem/Views/Inventory/_BakingMaterialAdjustment.cshtml]
+[c:/OatBoySystem/Views/Inventory/_BakingMaterialAdjustment.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSW52ZW50b3J5XF9CYWtpbmdNYXRlcmlhbEFkanVzdG1lbnQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/OatBoySystem/Views/Inventory/_BakingMaterialRestock.cshtml]
+[c:/OatBoySystem/Views/Inventory/_BakingMaterialRestock.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSW52ZW50b3J5XF9CYWtpbmdNYXRlcmlhbFJlc3RvY2suY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/OatBoySystem/Views/Inventory/_ShippingMaterialAdjustment.cshtml]
+[c:/OatBoySystem/Views/Inventory/_ShippingMaterialAdjustment.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSW52ZW50b3J5XF9TaGlwcGluZ01hdGVyaWFsQWRqdXN0bWVudC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/OatBoySystem/Views/Inventory/_ShippingMaterialRestock.cshtml]
+[c:/OatBoySystem/Views/Inventory/_ShippingMaterialRestock.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSW52ZW50b3J5XF9TaGlwcGluZ01hdGVyaWFsUmVzdG9jay5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/OatBoySystem/Views/Shared/Error.cshtml]
+[c:/OatBoySystem/Views/Shared/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/OatBoySystem/Views/Shared/_ValidationScriptsPartial.cshtml]
+[c:/OatBoySystem/Views/Shared/_ValidationScriptsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/OatBoySystem/Views/_ViewImports.cshtml]
+[c:/OatBoySystem/Views/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/OatBoySystem/Views/_ViewStart.cshtml]
+[c:/OatBoySystem/Views/_ViewStart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/OatBoySystem/Views/Shared/_Layout.cshtml]
+[c:/OatBoySystem/Views/Shared/_Layout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = b-1l2hme2de2

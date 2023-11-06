@@ -25,5 +25,15 @@
     @foreach (RecipeBakingMaterialAssociation rbma in Model.Recipe.BakingMaterialAssociations)
     {
         <p class="text-start mt-3">@rbma.BakingMaterial.Name used: (@rbma.Quantity @rbma.BakingMaterial.UnitOfMeasure.ToUpper() needed) </p>
+        <div class="container">
+            @{
+                List<BatchBakingMaterialStockAssociation> matched = Model.BakingMaterialStockAssociations.Where(bmsa => bmsa.BakingMaterialStock.BakingMaterialId == rbma.BakingMaterialId).ToList();
+            }
+            @foreach (BatchBakingMaterialStockAssociation bbmsa in matched)
+            {
+                <p>@bbmsa.BakingMaterialStock.Brand @bbmsa.BakingMaterialStock.Batch @bbmsa.Quantity</p>
+            }
+
+        </div>
     }
 </div>
