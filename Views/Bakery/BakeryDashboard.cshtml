@@ -15,7 +15,7 @@
         <button class="btn btn-primary">Let's bake!</button>
     </form>
     <h2>Previous Batches:</h2>
-    <ul>
+    <ul class="text-center">
     @foreach (Batch batch in Model.AllBatches)
     {
         <li class="no-dot"><a asp-action="BatchEdit" asp-controller="Bakery" asp-route-bId="@batch.BatchId">@batch.BatchId @batch.Recipe?.Name -- @ViewBag.Statuses[batch.Status]</a></li>

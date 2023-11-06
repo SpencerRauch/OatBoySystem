@@ -16,7 +16,7 @@
                 {
                 <tr>
                     <td><a asp-action="RecipeView" asp-controller="Bakery" asp-route-rId="@r.RecipeId">@r.Name</a></td>
-                    <td>@r.Batches.Count</td>
+                    <td><a asp-action="RecipeAllBatch" asp-controller="Bakery" asp-route-rId="@r.RecipeId">@r.Batches.Count</a></td>
                 </tr>
                 }
         </tbody>

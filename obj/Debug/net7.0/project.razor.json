@@ -18690,6 +18690,11 @@
       "FileKind": "mvc"
     },
     {
+      "FilePath": "c:\\OatBoySystem\\Views\\Bakery\\RecipeAllBatch.cshtml",
+      "TargetPath": "Views\\Bakery\\RecipeAllBatch.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "c:\\OatBoySystem\\Views\\_ViewImports.cshtml",
       "TargetPath": "Views\\_ViewImports.cshtml",
       "FileKind": "mvc"

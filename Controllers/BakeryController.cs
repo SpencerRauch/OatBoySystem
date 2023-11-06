@@ -115,6 +115,14 @@ public class BakeryController : Controller
 
     }
 
+    [HttpGet("recipes/{rId}/all_batches")]
+    public ViewResult RecipeAllBatch(int rId)
+    {
+        Recipe RecipeWithBatches = _context.Recipes.Include(r=>r.Batches).FirstOrDefault(r=>r.RecipeId == rId);
+        ViewBag.Statuses = BatchStatus;
+        return View("RecipeAllBatch",RecipeWithBatches);
+    }
+
     //BATCHES
 
     [HttpGet("dashboard")]
@@ -134,7 +142,7 @@ public class BakeryController : Controller
         Batch newBatch = new(){RecipeId = rId, Status = 0};
         _context.Add(newBatch);
         _context.SaveChanges();
-        return RedirectToAction("BakeryDashboard");
+        return RedirectToAction("BatchEdit", new{bId=newBatch.BatchId});
     }
 
     [HttpGet("batches/{bId}")]
@@ -147,6 +155,7 @@ public class BakeryController : Controller
                             .ThenInclude(r=>r.BakingMaterialAssociations)
                             .ThenInclude(bma=>bma.BakingMaterial)
                             .FirstOrDefault(b=>b.BatchId==bId);
+        
         ViewBag.Statuses = BatchStatus;
         return View("BatchEdit",toEdit);
     }
@@ -157,7 +166,7 @@ public class BakeryController : Controller
         Batch toUpdate = _context.Batches.FirstOrDefault(b=>b.BatchId==bId);
         toUpdate.Status = status;
         _context.SaveChanges();
-        return RedirectToAction("BatchEdit", new{bId});
+        return RedirectToAction("BakeryDashboard");
     }
 
 

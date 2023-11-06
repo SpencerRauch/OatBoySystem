@@ -1,0 +1,14 @@
+@model Recipe
+@{
+    ViewData["Title"] = "Batch by Recipe";
+}
+<div class="container text-center">
+    <h1>@Model.Name</h1>
+<ul>
+    @foreach (Batch batch in Model.Batches)
+    {
+        <li class="no-dot"><a asp-action="BatchEdit" asp-controller="Bakery" asp-route-bId="@batch.BatchId">@batch.BatchId
+                @batch.Recipe?.Name -- @ViewBag.Statuses[batch.Status]</a></li>
+    }
+</ul>
+</div>
