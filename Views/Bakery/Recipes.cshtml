@@ -1,0 +1,26 @@
+@model List<Recipe>
+@{
+    ViewData["Title"] = "Recipes";
+}
+<div class="text-center container">
+    <h1>Recipes</h1>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Batches</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                @foreach (Recipe r in Model)
+                {
+                    <td><a asp-action="RecipeView" asp-controller="Bakery" asp-route-rId="@r.RecipeId">@r.Name</a></td>
+                    <td>@r.Batches.Count</td>
+                }
+            </tr>
+        </tbody>
+    </table>
+    @if (Model.Count == 0){<h2>No recipes yet</h2>}
+    @await Html.PartialAsync("_RecipeNew", new Recipe())
+</div>

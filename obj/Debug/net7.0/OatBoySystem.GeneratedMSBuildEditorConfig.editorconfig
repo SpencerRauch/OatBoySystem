@@ -16,6 +16,22 @@ build_property.GenerateRazorMetadataSourceChecksumAttributes =
 build_property.MSBuildProjectDirectory = C:\OatBoySystem
 build_property._RazorSourceGeneratorDebug = 
 
+[C:/OatBoySystem/Views/Bakery/Recipes.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQmFrZXJ5XFJlY2lwZXMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/OatBoySystem/Views/Bakery/RecipeView.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQmFrZXJ5XFJlY2lwZVZpZXcuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/OatBoySystem/Views/Bakery/_AddIngredient.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQmFrZXJ5XF9BZGRJbmdyZWRpZW50LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/OatBoySystem/Views/Bakery/_RecipeNew.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQmFrZXJ5XF9SZWNpcGVOZXcuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/OatBoySystem/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 

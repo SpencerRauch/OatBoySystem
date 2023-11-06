@@ -6,6 +6,7 @@ using OatBoySystem.Models.ViewModels;
 
 namespace OatBoySystem.Controllers;
 
+[Route("inventory")]
 public class InventoryController : Controller
 {
     private readonly ILogger<InventoryController> _logger;
@@ -26,7 +27,7 @@ public class InventoryController : Controller
         _context = context;
     }
 
-    [HttpGet("inventory")]
+    [HttpGet("dashboard")]
     public IActionResult Dashboard()
     {
         InventoryDash InventoryDash = new()

@@ -1,0 +1,16 @@
+@model Recipe
+
+<h2>New Recipe</h2>
+<form asp-action="RecipeCreate" asp-controller="Bakery" method="Post">
+    <div class="mb-3">
+        <label asp-for="Name"></label>
+        <input asp-for="Name">
+        <p><span class="text-danger" asp-validation-for="Name"></span></p>
+    </div>
+    <div class="mb-3">
+        <label asp-for="Description"></label>
+        <input asp-for="Description">
+        <p><span class="text-danger" asp-validation-for="Description"></span></p>
+    </div>
+    <button class="btn btn-primary">Create</button>
+</form>
