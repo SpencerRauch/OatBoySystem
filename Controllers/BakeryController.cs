@@ -14,6 +14,19 @@ public class BakeryController : Controller
 
     private OatBoyContext _context;
 
+    private Dictionary<int, string> BatchStatus = new Dictionary<int, string>()
+    {
+        {0,"Ordered"},
+        {1,"In Process"},
+        {2,"Cooling"},
+        {3,"Drying"},
+        {4,"Ready To Pack"},
+        {5,"Processed"},
+        {6,"Quarantine"},
+        {7,"Recall"},
+    };
+
+
     public BakeryController(ILogger<BakeryController> logger, OatBoyContext context)
     {
         _logger = logger;
@@ -107,11 +120,44 @@ public class BakeryController : Controller
     [HttpGet("dashboard")]
     public ViewResult BakeryDashboard()
     {
+        ViewBag.Statuses = BatchStatus;
         return View("BakeryDashboard", new BakeryDash()
         {
             AllRecipes = _context.Recipes.ToList(),
-            AllBatches = _context.Batches.Include(b => b.Recipe).ToList()
+            AllBatches = _context.Batches.Include(b => b.Recipe).OrderByDescending(b=>b.BatchId).ToList()
         });
+    }
+
+    [HttpPost("batches/create")]
+    public RedirectToActionResult BatchCreate(int rId)
+    {
+        Batch newBatch = new(){RecipeId = rId, Status = 0};
+        _context.Add(newBatch);
+        _context.SaveChanges();
+        return RedirectToAction("BakeryDashboard");
+    }
+
+    [HttpGet("batches/{bId}")]
+    public ViewResult BatchEdit(int bId)
+    {
+        Batch toEdit = _context.Batches
+                            .Include(b => b.BakingMaterialStockAssociations)
+                            .ThenInclude(bmsa => bmsa.BakingMaterialStock)
+                            .Include(b => b.Recipe)
+                            .ThenInclude(r=>r.BakingMaterialAssociations)
+                            .ThenInclude(bma=>bma.BakingMaterial)
+                            .FirstOrDefault(b=>b.BatchId==bId);
+        ViewBag.Statuses = BatchStatus;
+        return View("BatchEdit",toEdit);
+    }
+
+    [HttpPost("batches/{bId}/status")]
+    public RedirectToActionResult BatchStatusUpdate(int bId, int status)
+    {
+        Batch toUpdate = _context.Batches.FirstOrDefault(b=>b.BatchId==bId);
+        toUpdate.Status = status;
+        _context.SaveChanges();
+        return RedirectToAction("BatchEdit", new{bId});
     }
 
 

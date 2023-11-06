@@ -43,3 +43,7 @@ html {
   width: 100%;
   white-space: nowrap;
 }
+
+.no-dot {
+  list-style: none;
+}
