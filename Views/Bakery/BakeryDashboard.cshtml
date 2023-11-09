@@ -4,6 +4,12 @@
 }
 <div class="container text-center">
     <h1>Bakery</h1>
+    @if(Model.AllRecipes.Count == 0)
+    {
+        <h2>Please input recipe before baking</h2>
+    }
+    else
+    {
     <h2>Recipe to craft:</h2>
     <form asp-action="BatchCreate" asp-controller="Bakery" method="post">
         <select name="rId">
@@ -14,8 +20,13 @@
         </select>
         <button class="btn btn-primary">Let's bake!</button>
     </form>
+    }
     <h2>Previous Batches:</h2>
     <ul class="text-center">
+    @if(Model.AllBatches.Count == 0)
+    {
+        <h2>You haven't baked anything yet, Mergie.</h2>
+    }
     @foreach (Batch batch in Model.AllBatches)
     {
         <li class="no-dot"><a asp-action="BatchEdit" asp-controller="Bakery" asp-route-bId="@batch.BatchId">@batch.BatchId @batch.Recipe?.Name -- @ViewBag.Statuses[batch.Status]</a></li>
