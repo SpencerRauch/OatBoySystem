@@ -20,7 +20,12 @@
     @if (Unassociated.Count > 0)
     {
         @await Html.PartialAsync("_AddIngredient",new RecipeAddIngredient(){Unassociated = Unassociated,RecipeId=Model.Recipe.RecipeId});  
-    } else {
+    } else if (Model.Recipe.BakingMaterialAssociations.Count == 0)
+    {
+        <p>No ingredients in system, please input ingredients</p>
+    }
+    else 
+    {
         <p>All ingredients on recipe</p>
     }
 
