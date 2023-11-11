@@ -28,12 +28,31 @@
         <div class="container">
             @{
                 List<BatchBakingMaterialStockAssociation> matched = Model.BakingMaterialStockAssociations.Where(bmsa => bmsa.BakingMaterialStock.BakingMaterialId == rbma.BakingMaterialId).ToList();
+                List<BakingMaterialStock> AllStock = ViewBag.CurrentStock;
+                List<BakingMaterialStock> corelated = AllStock.Where(bms=> bms.BakingMaterialId == rbma.BakingMaterialId).ToList();
             }
             @foreach (BatchBakingMaterialStockAssociation bbmsa in matched)
             {
                 <p>@bbmsa.BakingMaterialStock.Brand @bbmsa.BakingMaterialStock.Batch @bbmsa.Quantity</p>
             }
 
+            <div>
+                @if (corelated.Count > 0)
+                {   
+                <form asp-action="BatchAddStock" asp-controller="Bakery" method="Post" asp-route-batchId="@Model.BatchId">
+                    <select name="stockId" id="stockId">
+                        @foreach (BakingMaterialStock bms in corelated)
+                        {
+                            <option value="@bms.BakingMaterialStockId">@bms.Brand (@bms.Batch) -- @bms.Quantity avail</option>
+                        }
+                    </select>
+                    <input type="number" name="qty">
+                    <button class="btn btn-primary">+</button>
+                </form>
+                } else {
+                    <p>No stock available</p>
+                }
+            </div>
         </div>
     }
 </div>

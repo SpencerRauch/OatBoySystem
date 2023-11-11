@@ -156,7 +156,9 @@ public class BakeryController : Controller
                             .ThenInclude(bma=>bma.BakingMaterial)
                             .FirstOrDefault(b=>b.BatchId==bId);
         
+        List<BakingMaterialStock> AllBakingMaterialStock = _context.BakingMaterialStock.Include(bms => bms.BakingMaterial).Where(bms=>bms.Quantity > 0).ToList();
         ViewBag.Statuses = BatchStatus;
+        ViewBag.CurrentStock = AllBakingMaterialStock;
         return View("BatchEdit",toEdit);
     }
 
@@ -174,5 +176,16 @@ public class BakeryController : Controller
     public IActionResult Error()
     {
         return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+    }
+
+    [HttpPost("batches/{bId}/addstock")]
+    public IActionResult BatchAddStock(int stockId, int qty, int bId)
+    {
+
+        Console.WriteLine(stockId);
+        Console.WriteLine(qty);
+        Console.WriteLine(bId);
+        
+        return RedirectToAction("BatchEdit", new{bId = bId});
     }
 }

@@ -10,7 +10,7 @@ public class ShippingMaterialStockForm
     public int Quantity { get; set; }
 
     [Required(ErrorMessage = "Brand required. Put unknown if not known")]
-    [UniqueBrand]
+    // [UniqueBrand]
     public string Brand { get; set; }
 
 }
