@@ -24,35 +24,41 @@
 
     @foreach (RecipeBakingMaterialAssociation rbma in Model.Recipe.BakingMaterialAssociations)
     {
-        <p class="text-start mt-3">@rbma.BakingMaterial.Name used: (@rbma.Quantity @rbma.BakingMaterial.UnitOfMeasure.ToUpper() needed) </p>
+        List<BatchBakingMaterialStockAssociation> matched = Model.BakingMaterialStockAssociations.Where(bmsa => bmsa.BakingMaterialStock.BakingMaterialId == rbma.BakingMaterialId).ToList();
+        int added = matched.Sum(bmsa => bmsa.Quantity );
+        int needed = rbma.Quantity - added;
+        List<BakingMaterialStock> AllStock = ViewBag.CurrentStock;
+        List<BakingMaterialStock> corelated = AllStock.Where(bms=> bms.BakingMaterialId == rbma.BakingMaterialId).ToList();
+        
+        <p class="text-start mt-3">@rbma.BakingMaterial.Name @added / @rbma.Quantity @rbma.BakingMaterial.UnitOfMeasure.ToUpper() filled </p>
         <div class="container">
-            @{
-                List<BatchBakingMaterialStockAssociation> matched = Model.BakingMaterialStockAssociations.Where(bmsa => bmsa.BakingMaterialStock.BakingMaterialId == rbma.BakingMaterialId).ToList();
-                List<BakingMaterialStock> AllStock = ViewBag.CurrentStock;
-                List<BakingMaterialStock> corelated = AllStock.Where(bms=> bms.BakingMaterialId == rbma.BakingMaterialId).ToList();
-            }
             @foreach (BatchBakingMaterialStockAssociation bbmsa in matched)
             {
-                <p>@bbmsa.BakingMaterialStock.Brand @bbmsa.BakingMaterialStock.Batch @bbmsa.Quantity</p>
+                <div class="d-flex justify-content-center align-items-center gap-2 mb-5">
+
+                <label>@bbmsa.BakingMaterialStock.Brand (@bbmsa.BakingMaterialStock.Batch) -- @bbmsa.Quantity @rbma.BakingMaterial.UnitOfMeasure.ToUpper()</label>
+                <form asp-action="BatchRemoveStock" asp-controller="Bakery" method="Post" asp-route-batchId="@Model.BatchId" asp-route-bbmsaId="@bbmsa.BatchBakingMaterialStockAssociationId">
+                    <button class="btn btn-danger">X</button>
+                </form>
+                </div>
             }
 
             <div>
-                @if (corelated.Count > 0)
+                @if (corelated.Count > 0 )
                 {   
-                <form asp-action="BatchAddStock" asp-controller="Bakery" method="Post" asp-route-batchId="@Model.BatchId">
-                    <select name="stockId" id="stockId">
-                        @foreach (BakingMaterialStock bms in corelated)
-                        {
-                            <option value="@bms.BakingMaterialStockId">@bms.Brand (@bms.Batch) -- @bms.Quantity avail</option>
-                        }
-                    </select>
-                    <input type="number" name="qty">
-                    <button class="btn btn-primary">+</button>
-                </form>
+                    if (needed > 0)
+                    {
+                        @await Html.PartialAsync("_BatchAddStockForm", new BatchAddStockForm(){BatchId=Model.BatchId, RelatedStock=corelated,Needed=needed});
+                    }
+                    else
+                    {
+                        <p>Item filled</p>
+                    }
                 } else {
                     <p>No stock available</p>
                 }
             </div>
         </div>
     }
+    <div class="my-5">😍</div>
 </div>

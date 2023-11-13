@@ -1,3 +1,4 @@
+#pragma warning disable CS8600
 using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
@@ -37,8 +38,8 @@ public class BakeryController : Controller
     [HttpGet("recipes")]
     public ViewResult Recipes()
     {
-        List<Recipe> AllRecipes = _context.Recipes.Include(r=>r.Batches).ToList();
-        return View("Recipes",AllRecipes);
+        List<Recipe> AllRecipes = _context.Recipes.Include(r => r.Batches).ToList();
+        return View("Recipes", AllRecipes);
     }
 
     [HttpPost("recipes/create")]
@@ -50,18 +51,18 @@ public class BakeryController : Controller
         }
         _context.Add(newRecipe);
         _context.SaveChanges();
-        return RedirectToAction("RecipeView",new{rId=newRecipe.RecipeId});
+        return RedirectToAction("RecipeView", new { rId = newRecipe.RecipeId });
     }
 
     [HttpGet("recipes/{rId}")]
     public ViewResult RecipeView(int rId)
     {
         Recipe Recipe = _context.Recipes
-                            .Include(r=>r.BakingMaterialAssociations)
+                            .Include(r => r.BakingMaterialAssociations)
                             .ThenInclude(bma => bma.BakingMaterial)
                             .FirstOrDefault(r => r.RecipeId == rId);
         List<BakingMaterial> AllBakingMaterials = _context.BakingMaterials.ToList();
-        RecipeEdit ViewModel = new(){Recipe = Recipe,AllBakingMaterials = AllBakingMaterials};
+        RecipeEdit ViewModel = new() { Recipe = Recipe, AllBakingMaterials = AllBakingMaterials };
         return View("RecipeView", ViewModel);
     }
 
@@ -85,7 +86,7 @@ public class BakeryController : Controller
         };
         _context.Add(newAss);
         _context.SaveChanges();
-        return RedirectToAction("RecipeView", new{rId });
+        return RedirectToAction("RecipeView", new { rId });
 
     }
 
@@ -100,7 +101,7 @@ public class BakeryController : Controller
                                                         .FirstOrDefault(rbma => rbma.RecipeId == rId && rbma.BakingMaterialId == bmId);
         toUpdate.Quantity = rbma.Quantity;
         _context.SaveChanges();
-        return RedirectToAction("RecipeView", new{rId });
+        return RedirectToAction("RecipeView", new { rId });
 
     }
 
@@ -111,16 +112,16 @@ public class BakeryController : Controller
                                                             .FirstOrDefault(rbma => rbma.RecipeId == rId && rbma.BakingMaterialId == bmId);
         _context.Remove(toBeRemoved);
         _context.SaveChanges();
-        return RedirectToAction("RecipeView", new{rId });
+        return RedirectToAction("RecipeView", new { rId });
 
     }
 
     [HttpGet("recipes/{rId}/all_batches")]
     public ViewResult RecipeAllBatch(int rId)
     {
-        Recipe RecipeWithBatches = _context.Recipes.Include(r=>r.Batches).FirstOrDefault(r=>r.RecipeId == rId);
+        Recipe RecipeWithBatches = _context.Recipes.Include(r => r.Batches).FirstOrDefault(r => r.RecipeId == rId);
         ViewBag.Statuses = BatchStatus;
-        return View("RecipeAllBatch",RecipeWithBatches);
+        return View("RecipeAllBatch", RecipeWithBatches);
     }
 
     //BATCHES
@@ -132,17 +133,17 @@ public class BakeryController : Controller
         return View("BakeryDashboard", new BakeryDash()
         {
             AllRecipes = _context.Recipes.ToList(),
-            AllBatches = _context.Batches.Include(b => b.Recipe).OrderByDescending(b=>b.BatchId).ToList()
+            AllBatches = _context.Batches.Include(b => b.Recipe).OrderByDescending(b => b.BatchId).ToList()
         });
     }
 
     [HttpPost("batches/create")]
     public RedirectToActionResult BatchCreate(int rId)
     {
-        Batch newBatch = new(){RecipeId = rId, Status = 0};
+        Batch newBatch = new() { RecipeId = rId, Status = 0 };
         _context.Add(newBatch);
         _context.SaveChanges();
-        return RedirectToAction("BatchEdit", new{bId=newBatch.BatchId});
+        return RedirectToAction("BatchEdit", new { bId = newBatch.BatchId });
     }
 
     [HttpGet("batches/{bId}")]
@@ -152,25 +153,64 @@ public class BakeryController : Controller
                             .Include(b => b.BakingMaterialStockAssociations)
                             .ThenInclude(bmsa => bmsa.BakingMaterialStock)
                             .Include(b => b.Recipe)
-                            .ThenInclude(r=>r.BakingMaterialAssociations)
-                            .ThenInclude(bma=>bma.BakingMaterial)
-                            .FirstOrDefault(b=>b.BatchId==bId);
-        
-        List<BakingMaterialStock> AllBakingMaterialStock = _context.BakingMaterialStock.Include(bms => bms.BakingMaterial).Where(bms=>bms.Quantity > 0).ToList();
+                            .ThenInclude(r => r.BakingMaterialAssociations)
+                            .ThenInclude(bma => bma.BakingMaterial)
+                            .FirstOrDefault(b => b.BatchId == bId);
+
+        List<BakingMaterialStock> AllBakingMaterialStock = _context.BakingMaterialStock.Include(bms => bms.BakingMaterial).Where(bms => bms.Quantity > 0).ToList();
         ViewBag.Statuses = BatchStatus;
         ViewBag.CurrentStock = AllBakingMaterialStock;
-        return View("BatchEdit",toEdit);
+        return View("BatchEdit", toEdit);
     }
 
     [HttpPost("batches/{bId}/status")]
     public RedirectToActionResult BatchStatusUpdate(int bId, int status)
     {
-        Batch toUpdate = _context.Batches.FirstOrDefault(b=>b.BatchId==bId);
+        Batch toUpdate = _context.Batches.FirstOrDefault(b => b.BatchId == bId);
         toUpdate.Status = status;
         _context.SaveChanges();
         return RedirectToAction("BakeryDashboard");
     }
 
+    [HttpPost("batches/{batchId}/addstock")]
+    public IActionResult BatchAddStock(int batchId, BatchAddStockForm basForm)
+    {
+        if (!ModelState.IsValid)
+        {
+            var message = string.Join(" | ", ModelState.Values
+                    .SelectMany(v => v.Errors)
+                    .Select(e => e.ErrorMessage));
+            Console.WriteLine(message);
+            return BatchEdit(batchId);
+        }
+        Console.WriteLine($"batch {batchId} stock {basForm.BakingMaterialStockId} qty {basForm.Quantity}");
+        BatchBakingMaterialStockAssociation newAss = new()
+        {
+            Quantity = basForm.Quantity,
+            BatchId = batchId,
+            BakingMaterialStockId = basForm.BakingMaterialStockId
+        };
+        _context.Add(newAss);
+        _context.SaveChanges();
+        return RedirectToAction("BatchEdit", new { bId = batchId });
+    }
+
+    [HttpPost("batches/{batchId}/{bbmsaId}/remove")]
+    public IActionResult BatchRemoveStock(int batchId, int bbmsaId)
+    {
+        Console.WriteLine($"batch {batchId} assss {bbmsaId}");
+        BatchBakingMaterialStockAssociation bbmsa = _context.BatchBakingMaterialStockAssociations
+                                                        .FirstOrDefault(bbmsa => bbmsa.BatchBakingMaterialStockAssociationId == bbmsaId);
+        if(bbmsa == null)
+        {
+            Console.WriteLine("ass not found");
+            return RedirectToAction("BatchEdit", new{bId = batchId});
+        }
+        _context.Remove(bbmsa);
+        _context.SaveChanges();
+        return RedirectToAction("BatchEdit", new{bId = batchId});
+        
+    }
 
     [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
     public IActionResult Error()
@@ -178,14 +218,4 @@ public class BakeryController : Controller
         return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
     }
 
-    [HttpPost("batches/{bId}/addstock")]
-    public IActionResult BatchAddStock(int stockId, int qty, int bId)
-    {
-
-        Console.WriteLine(stockId);
-        Console.WriteLine(qty);
-        Console.WriteLine(bId);
-        
-        return RedirectToAction("BatchEdit", new{bId = bId});
-    }
 }

@@ -18670,6 +18670,11 @@
       "FileKind": "mvc"
     },
     {
+      "FilePath": "c:\\OatBoySystem\\Views\\Bakery\\_BatchAddStockForm.cshtml",
+      "TargetPath": "Views\\Bakery\\_BatchAddStockForm.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "c:\\OatBoySystem\\Views\\Bakery\\_UpdateIngredient.cshtml",
       "TargetPath": "Views\\Bakery\\_UpdateIngredient.cshtml",
       "FileKind": "mvc"

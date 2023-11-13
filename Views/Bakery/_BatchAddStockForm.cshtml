@@ -1,0 +1,14 @@
+@model BatchAddStockForm
+
+<form asp-action="BatchAddStock" asp-controller="Bakery" method="Post" asp-route-batchId="@Model.BatchId">
+    <input type="hidden" asp-for="Needed" value="@Model.Needed">
+    <select asp-for="BakingMaterialStockId">
+        @foreach (BakingMaterialStock bms in Model.RelatedStock)
+        {
+            <option value="@bms.BakingMaterialStockId">@bms.Brand (@bms.Batch) -- @bms.Quantity avail</option>
+        }
+    </select>
+    <input type="number" asp-for="Quantity">
+    <button class="btn btn-primary">+</button>
+    <p class="text-danger"><span asp-validation-for="Quantity"></span></p>
+</form>
